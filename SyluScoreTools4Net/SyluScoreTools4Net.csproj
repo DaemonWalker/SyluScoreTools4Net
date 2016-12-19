@@ -54,12 +54,6 @@
     <Compile Include="Class\UserInfo.cs" />
     <Compile Include="Class\WrongAccException.cs" />
     <Compile Include="Code\WebPost.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmAcc.cs">
       <SubType>Form</SubType>
     </Compile>

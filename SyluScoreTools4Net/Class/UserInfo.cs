@@ -13,5 +13,6 @@ namespace SyluScoreTools4Net.Class
         public string Password { get; set; }
         public List<ClassInfo> ScoreList { get; set; }
         public List<ClassInfo> VIPClassList { get; set; }
+        public double VIPAvg { get; set; }
     }
 }

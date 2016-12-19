@@ -21,8 +21,20 @@ namespace SyluScoreTools4Net.Forms
         private string DirPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ScroeTools\";
         private string FilePath;
         private JavaScriptSerializer Json = new JavaScriptSerializer();
+        private Dictionary<string, UserInfo> UserDict;
 
-        private UserInfo NowUser = new UserInfo();
+        private UserInfo NowUser
+        {
+            get
+            {
+                if (!UserDict.ContainsKey("Now"))
+                {
+                    UserDict.Add("Now", new UserInfo());
+                }
+                return UserDict["Now"];
+            }
+        }
+
         public FrmMain()
         {
             InitializeComponent();
@@ -38,9 +50,16 @@ namespace SyluScoreTools4Net.Forms
             labVIPScore.Alignment = ToolStripItemAlignment.Right;
             if (File.Exists(FilePath))
             {
-                NowUser = Json.Deserialize<UserInfo>(File.ReadAllText(FilePath));
-                dgvData.DataSource = NowUser.ScoreList;
-                ShowVIPClass();
+                try
+                {
+                    UserDict = Json.Deserialize<Dictionary<string, UserInfo>>(File.ReadAllText(FilePath));
+                    dgvData.DataSource = NowUser.ScoreList;
+                    ShowVIPClass();
+                }
+                catch
+                {
+                    UserDict = new Dictionary<string, UserInfo>();
+                }
             }
         }
 
@@ -53,6 +72,7 @@ namespace SyluScoreTools4Net.Forms
                 {
                     ChangeStatusLabel("正在获取成绩中...");
                     GetScoreInfo();
+                    SaveData();
                     ChangeStatusLabel("成绩获取成功!");
                 });
             }
@@ -82,6 +102,18 @@ namespace SyluScoreTools4Net.Forms
             }
         }
 
+        private void ChangeVIPAvgLabel(object data)
+        {
+            if (this.statusStrip.InvokeRequired)
+            {
+                this.Invoke(new ChangeControlData(ChangeStatusLabel), data);
+            }
+            else
+            {
+                labVIPScore.Text = "当前用户学位课绩点:" + data.ToString();
+            }
+        }
+
         private void ChangeRowColor(object data)
         {
             if (this.dgvData.InvokeRequired)
@@ -100,7 +132,9 @@ namespace SyluScoreTools4Net.Forms
             await Task.Run(() =>
             {
                 ChangeStatusLabel("正在获取学位课列表中...");
+                GetVIPClass();
                 ShowVIPClass();
+                SaveData();
                 ChangeStatusLabel("学位课列表获取成功!");
             });
         }
@@ -110,18 +144,23 @@ namespace SyluScoreTools4Net.Forms
             {
                 using (var sw = new StreamWriter(file))
                 {
-                    sw.WriteLine(Json.Serialize(NowUser));
+                    sw.WriteLine(Json.Serialize(UserDict));
                     sw.Flush();
                     sw.Close();
                 }
             }
         }
-        private void ShowVIPClass()
+
+        private void GetVIPClass()
         {
             var webPost = new WebPost();
-            webPost.UserName = FrmAcc.UserName;
-            webPost.PassWord = FrmAcc.Password;
+            webPost.UserName = NowUser.UserName;
+            webPost.PassWord = NowUser.Password;
             NowUser.VIPClassList = webPost.GetAllVIP();
+        }
+        private void ShowVIPClass()
+        {
+           
             for (int i = 0; i < NowUser.ScoreList.Count; i++)
             {
                 var classInfo = NowUser.ScoreList[i];
@@ -130,12 +169,20 @@ namespace SyluScoreTools4Net.Forms
                     if (classInfo.ClassID == vipInfo.ClassID)
                     {
                         ChangeRowColor(i);
-                        //this.dgvData.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                        vipInfo.Score = Math.Max(vipInfo.Score, classInfo.Score);
                         break;
                     }
                 }
             }
-            SaveData();
+            double allScore = 0;
+            double allWeight = 0;
+            foreach (var vipInfo in NowUser.VIPClassList)
+            {
+                allScore += vipInfo.Score * vipInfo.ClassWeight;
+                allWeight += vipInfo.ClassWeight;
+            }
+            NowUser.VIPAvg = allScore / allWeight;
+            ChangeVIPAvgLabel(NowUser.VIPAvg);
         }
         private void GetScoreInfo()
         {
@@ -145,7 +192,6 @@ namespace SyluScoreTools4Net.Forms
             WebPost.PassWord = FrmAcc.Password;
             NowUser.ScoreList = WebPost.GetAllScore();
             ChangeDgvDataSource(NowUser.ScoreList);
-            SaveData();
         }
     }
 }
