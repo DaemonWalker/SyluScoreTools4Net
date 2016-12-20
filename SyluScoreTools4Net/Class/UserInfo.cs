@@ -44,29 +44,19 @@ namespace SyluScoreTools4Net.Class
             }
             await Task.Run(() =>
             {
-                var tasks = new List<Task>();
-                if (ScoreList == null || ScoreList.Count == 0)
-                {
-                    tasks.Add(Task.Factory.StartNew(() =>
-                    {
-                        var webPost = new WebPost();
-                        webPost.UserName = UserName;
-                        webPost.PassWord = Password;
-                        this.ScoreList = webPost.GetAllScore();
-                    }));
-                }
-                if (VIPClassList == null || VIPClassList.Count == 0)
-                {
-                    tasks.Add(Task.Factory.StartNew(() =>
-                    {
-                        var webPost = new WebPost();
-                        webPost.UserName = UserName;
-                        webPost.PassWord = Password;
-                        this.VIPClassList = webPost.GetAllVIP();
-                    }));
-                }
-                Task.WaitAll(tasks.ToArray());
+                var webPost = new WebPost();
+                webPost.UserName = UserName;
+                webPost.PassWord = Password;
+                this.ScoreList = webPost.GetAllScore();
             });
+            await Task.Run(() =>
+            {
+                var webPost = new WebPost();
+                webPost.UserName = UserName;
+                webPost.PassWord = Password;
+                this.VIPClassList = webPost.GetAllVIP();
+            });
+            
             CountVipAvg();
         }
         async public Task RefreshScore()
