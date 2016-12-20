@@ -30,7 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.计算新的平均绩点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设置所有未通过课程绩点为10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSetToOne = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labOldAvg = new System.Windows.Forms.ToolStripStatusLabel();
             this.labNewAvg = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,7 +48,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.计算新的平均绩点ToolStripMenuItem,
-            this.设置所有未通过课程绩点为10ToolStripMenuItem});
+            this.btnSetToOne});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1385, 25);
@@ -61,11 +61,12 @@
             this.计算新的平均绩点ToolStripMenuItem.Size = new System.Drawing.Size(116, 21);
             this.计算新的平均绩点ToolStripMenuItem.Text = "计算新的平均绩点";
             // 
-            // 设置所有未通过课程绩点为10ToolStripMenuItem
+            // btnSetToOne
             // 
-            this.设置所有未通过课程绩点为10ToolStripMenuItem.Name = "设置所有未通过课程绩点为10ToolStripMenuItem";
-            this.设置所有未通过课程绩点为10ToolStripMenuItem.Size = new System.Drawing.Size(181, 21);
-            this.设置所有未通过课程绩点为10ToolStripMenuItem.Text = "设置所有未通过课程绩点为1.0";
+            this.btnSetToOne.Name = "btnSetToOne";
+            this.btnSetToOne.Size = new System.Drawing.Size(181, 21);
+            this.btnSetToOne.Text = "设置所有未通过课程绩点为1.0";
+            this.btnSetToOne.Click += new System.EventHandler(this.btnSetToOne_Click);
             // 
             // statusStrip1
             // 
@@ -88,13 +89,14 @@
             // labNewAvg
             // 
             this.labNewAvg.Name = "labNewAvg";
-            this.labNewAvg.Size = new System.Drawing.Size(131, 17);
-            this.labNewAvg.Text = "toolStripStatusLabel2";
+            this.labNewAvg.Size = new System.Drawing.Size(59, 17);
+            this.labNewAvg.Text = "新的绩点:";
             // 
             // dgvData
             // 
             this.dgvData.AllowUserToAddRows = false;
             this.dgvData.AllowUserToDeleteRows = false;
+            this.dgvData.AllowUserToResizeRows = false;
             this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -147,7 +149,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmVipSim";
-            this.Text = "FrmVipSim";
+            this.Text = "绩点模拟器";
             this.Load += new System.EventHandler(this.FrmVipSim_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -163,7 +165,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 计算新的平均绩点ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 设置所有未通过课程绩点为10ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnSetToOne;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel labOldAvg;
         private System.Windows.Forms.ToolStripStatusLabel labNewAvg;

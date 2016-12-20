@@ -46,6 +46,7 @@
             this.Column7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnRefreshSocre = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSim = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
@@ -55,7 +56,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.账号管理ToolStripMenuItem,
-            this.btnRefreshSocre});
+            this.btnRefreshSocre,
+            this.btnSim});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1224, 25);
@@ -74,14 +76,14 @@
             // btnAddAcc
             // 
             this.btnAddAcc.Name = "btnAddAcc";
-            this.btnAddAcc.Size = new System.Drawing.Size(148, 22);
+            this.btnAddAcc.Size = new System.Drawing.Size(152, 22);
             this.btnAddAcc.Text = "添加账号";
             this.btnAddAcc.Click += new System.EventHandler(this.btnAddAcc_Click);
             // 
             // btnSelectNowAcc
             // 
             this.btnSelectNowAcc.Name = "btnSelectNowAcc";
-            this.btnSelectNowAcc.Size = new System.Drawing.Size(148, 22);
+            this.btnSelectNowAcc.Size = new System.Drawing.Size(152, 22);
             this.btnSelectNowAcc.Text = "选择当前账号";
             // 
             // statusStrip
@@ -202,6 +204,13 @@
             this.btnRefreshSocre.Text = "刷新成绩信息";
             this.btnRefreshSocre.Click += new System.EventHandler(this.btnRefreshSocre_Click);
             // 
+            // btnSim
+            // 
+            this.btnSim.Name = "btnSim";
+            this.btnSim.Size = new System.Drawing.Size(80, 21);
+            this.btnSim.Text = "绩点模拟器";
+            this.btnSim.Click += new System.EventHandler(this.btnSim_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -212,7 +221,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
-            this.Text = "FrmMain";
+            this.Text = "绩点计算器";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -244,5 +253,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tslFrmStatus;
         private System.Windows.Forms.ToolStripStatusLabel labVIPScore;
         private System.Windows.Forms.ToolStripMenuItem btnRefreshSocre;
+        private System.Windows.Forms.ToolStripMenuItem btnSim;
     }
 }

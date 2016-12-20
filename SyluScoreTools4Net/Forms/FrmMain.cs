@@ -44,6 +44,11 @@ namespace SyluScoreTools4Net.Forms
         /// 账号信息
         /// </summary>
         private Dictionary<string, UserInfo> UserDict;
+
+        /// <summary>
+        /// 绩点模拟器窗口
+        /// </summary>
+        private FrmVipSim FrmSim = new FrmVipSim();
         #endregion
         #region public var
         /// <summary>
@@ -144,12 +149,13 @@ namespace SyluScoreTools4Net.Forms
             {
                 Directory.CreateDirectory(DirPath);
             }
-            FilePath = DirPath + "data.dat";
+            FilePath = DirPath + "data.json";
         }
         #endregion
         #region events
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            dgvData.AutoGenerateColumns = false;
             labVIPScore.Alignment = ToolStripItemAlignment.Right;
             if (File.Exists(FilePath))
             {
@@ -226,6 +232,17 @@ namespace SyluScoreTools4Net.Forms
             ShowVIPClass();
             SaveData();
         }
+
+        /// <summary>
+        /// 绩点模拟器点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSim_Click(object sender, EventArgs e)
+        {
+            FrmSim.NowUser = this.NowUser;
+            FrmSim.ShowDialog();
+        }
         #endregion
         #region private foo
         /// <summary>
@@ -298,6 +315,7 @@ namespace SyluScoreTools4Net.Forms
         /// </summary>
         private void SaveData()
         {
+            UserDict[NowUser.UserName] = NowUser;
             using (var file = new FileStream(FilePath, FileMode.Create, FileAccess.Write))
             {
                 using (var sw = new StreamWriter(file))
