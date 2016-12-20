@@ -61,22 +61,20 @@
             // 
             this.tbAcc.Font = new System.Drawing.Font("宋体", 12F);
             this.tbAcc.Location = new System.Drawing.Point(117, 35);
-            this.tbAcc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbAcc.Margin = new System.Windows.Forms.Padding(4);
             this.tbAcc.Name = "tbAcc";
             this.tbAcc.Size = new System.Drawing.Size(248, 26);
             this.tbAcc.TabIndex = 2;
-            this.tbAcc.Text = "1203050325";
             // 
             // tbPwd
             // 
             this.tbPwd.Font = new System.Drawing.Font("宋体", 12F);
             this.tbPwd.Location = new System.Drawing.Point(117, 87);
-            this.tbPwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPwd.Margin = new System.Windows.Forms.Padding(4);
             this.tbPwd.Name = "tbPwd";
             this.tbPwd.PasswordChar = '*';
             this.tbPwd.Size = new System.Drawing.Size(248, 26);
             this.tbPwd.TabIndex = 3;
-            this.tbPwd.Text = "94li06xue09wei";
             // 
             // btnSubmit
             // 
@@ -100,7 +98,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAcc";
             this.Text = "添加账号";
             this.ResumeLayout(false);

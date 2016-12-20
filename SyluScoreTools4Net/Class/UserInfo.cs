@@ -47,7 +47,7 @@ namespace SyluScoreTools4Net.Class
                 var tasks = new List<Task>();
                 if (ScoreList == null || ScoreList.Count == 0)
                 {
-                    tasks.Add(new Task(() =>
+                    tasks.Add(Task.Factory.StartNew(() =>
                     {
                         var webPost = new WebPost();
                         webPost.UserName = UserName;
@@ -57,7 +57,7 @@ namespace SyluScoreTools4Net.Class
                 }
                 if (VIPClassList == null || VIPClassList.Count == 0)
                 {
-                    tasks.Add(new Task(() =>
+                    tasks.Add(Task.Factory.StartNew(() =>
                     {
                         var webPost = new WebPost();
                         webPost.UserName = UserName;
