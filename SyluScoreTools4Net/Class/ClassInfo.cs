@@ -9,7 +9,7 @@ namespace SyluScoreTools4Net.Class
     /// <summary>
     /// 用于记录课程信息
     /// </summary>
-    class ClassInfo
+    public class ClassInfo
     {
         /// <summary>
         /// 课程编码
