@@ -1,4 +1,9 @@
 # 绩点计算器 4SYLU
+
+## 下载
+https://github.com/gI77/SyluScoreTools4Net/blob/master/SyluScoreTools4Net/Release/SyluScoreTools4Net.exe <br />
+点那个download就行
+
 ## 起因
 前两天王大翊问我原来的绩点计算器能不能用,贴吧的不太好使...<br />
 正好这段时间的工作是做Winform的桌面程序,就有了把原来的重写一板的冲动
