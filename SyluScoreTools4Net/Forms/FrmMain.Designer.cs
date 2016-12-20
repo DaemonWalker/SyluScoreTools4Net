@@ -34,6 +34,7 @@
             this.btnSelectNowAcc = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tslFrmStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.labVIPScore = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,8 +45,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnCalcVIP = new System.Windows.Forms.ToolStripMenuItem();
-            this.labVIPScore = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnRefreshSocre = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
@@ -55,7 +55,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.账号管理ToolStripMenuItem,
-            this.btnCalcVIP});
+            this.btnRefreshSocre});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1224, 25);
@@ -102,10 +102,17 @@
             this.tslFrmStatus.Size = new System.Drawing.Size(47, 17);
             this.tslFrmStatus.Text = "Hello~";
             // 
+            // labVIPScore
+            // 
+            this.labVIPScore.Name = "labVIPScore";
+            this.labVIPScore.Size = new System.Drawing.Size(119, 17);
+            this.labVIPScore.Text = "当前用户学位课绩点:";
+            // 
             // dgvData
             // 
             this.dgvData.AllowUserToAddRows = false;
             this.dgvData.AllowUserToDeleteRows = false;
+            this.dgvData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -121,6 +128,7 @@
             this.dgvData.Location = new System.Drawing.Point(0, 25);
             this.dgvData.Name = "dgvData";
             this.dgvData.RowTemplate.Height = 23;
+            this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(1224, 548);
             this.dgvData.TabIndex = 2;
             // 
@@ -187,18 +195,12 @@
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
-            // btnCalcVIP
+            // btnRefreshSocre
             // 
-            this.btnCalcVIP.Name = "btnCalcVIP";
-            this.btnCalcVIP.Size = new System.Drawing.Size(104, 21);
-            this.btnCalcVIP.Text = "计算学位课绩点";
-            this.btnCalcVIP.Click += new System.EventHandler(this.btnCalcVIP_Click);
-            // 
-            // labVIPScore
-            // 
-            this.labVIPScore.Name = "labVIPScore";
-            this.labVIPScore.Size = new System.Drawing.Size(119, 17);
-            this.labVIPScore.Text = "当前用户学位课绩点:";
+            this.btnRefreshSocre.Name = "btnRefreshSocre";
+            this.btnRefreshSocre.Size = new System.Drawing.Size(92, 21);
+            this.btnRefreshSocre.Text = "刷新成绩信息";
+            this.btnRefreshSocre.Click += new System.EventHandler(this.btnRefreshSocre_Click);
             // 
             // FrmMain
             // 
@@ -240,7 +242,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnAddAcc;
         private System.Windows.Forms.ToolStripMenuItem btnSelectNowAcc;
         private System.Windows.Forms.ToolStripStatusLabel tslFrmStatus;
-        private System.Windows.Forms.ToolStripMenuItem btnCalcVIP;
         private System.Windows.Forms.ToolStripStatusLabel labVIPScore;
+        private System.Windows.Forms.ToolStripMenuItem btnRefreshSocre;
     }
 }

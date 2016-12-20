@@ -257,7 +257,7 @@ namespace SyluScroeTools4Net.Code
                     ClassType = data[4],
                     ClassWeight = double.Parse(data[6]),
                     Score = double.Parse(data[7]),
-                    IsMinor = string.IsNullOrWhiteSpace(data[13]) ? true : (data[13] == "0" ? true : false),
+                    IsMinor = string.IsNullOrWhiteSpace(data[13]) ? false : (data[13] == "0" ? false : true),
                     IsRestudy = !string.IsNullOrWhiteSpace(data[19])
                 });
             }

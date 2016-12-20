@@ -55,5 +55,10 @@ namespace SyluScoreTools4Net.Class
         /// 重修标记
         /// </summary>
         public bool IsRestudy { get; set; }
+
+        /// <summary>
+        /// 假设的绩点
+        /// </summary>
+        public string NewScore { get; set; }
     }
 }

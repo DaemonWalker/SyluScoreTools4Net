@@ -43,7 +43,6 @@ namespace SyluScoreTools4Net.Forms
             try
             {
                 WebPost.CheckAccPsw();
-                MessageBox.Show("添加成功!");
                 this.DialogResult = DialogResult.OK;
                 this.Hide();
             }
