@@ -1,4 +1,4 @@
-5# 绩点计算器 4SYLU
+# 绩点计算器 4SYLU
 
 ## 下载
 https://github.com/gI77/SyluScoreTools4Net/blob/master/SyluScoreTools4Net/Release/SyluScoreTools4Net.exe <br />
