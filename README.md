@@ -1,10 +1,15 @@
 # 绩点计算器 4SYLU
+
+## 下载
+https://github.com/gI77/SyluScoreTools4Net/blob/master/SyluScoreTools4Net/Release/SyluScoreTools4Net.exe <br />
+点那个download就行
+
 ## 起因
 前两天王大翊问我原来的绩点计算器能不能用,贴吧的不太好使...<br />
 正好这段时间的工作是做Winform的桌面程序,就有了把原来的重写一板的冲动
 
 ## 使用方法
-1.  基于 .Net Framework 4.6,Win10的童鞋应该是可以无视掉这点的...<br />
+1.  基于 .Net Framework 4.5,Win10的童鞋应该是可以无视掉这点的...<br />
     其他操作系统的童鞋,下个安装包就可以了应该.
 2.  先添加账号,然后喝杯咖啡等着就好了.<br />
     因为学校获取学位课的界面超级卡,所以要等一段时间...<br />
